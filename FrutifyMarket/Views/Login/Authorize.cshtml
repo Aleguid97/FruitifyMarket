@@ -1,0 +1,46 @@
+﻿@model FrutifyMarket.Controllers.Users
+
+@{
+    ViewBag.Title = "Authorize";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <img class="card-img-top rounded-circle ms-auto me-auto mt-4" style="width: 200px; height: 200px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURK_cmChZK8axkrMrqnO4KxYyq-a5E_8WhhlK7k0eSA&s" alt="Fruitify Market">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Bentornato</h5>
+                        <p class="card-text text-center">Accedi al tuo Account</p>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input form-control" } })
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="text-center">
+                            <button class="submit btn " type="submit">Accedi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

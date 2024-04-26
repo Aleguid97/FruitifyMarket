@@ -1,0 +1,106 @@
+﻿@model IEnumerable<FrutifyMarket.Controllers.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/Site.css" />
+
+@if (TempData["AddCart"] != null)
+{
+    <div id="cartadd" class="alert alert-success mb-5" role="alert">
+        @TempData["AddCart"]
+    </div>
+
+    <script>
+        // Funzione per nascondere il messaggio dopo 2 secondi
+        setTimeout(function () {
+            var cartadd = document.getElementById("cartadd");
+            if (cartadd) {
+                cartadd.style.display = "none";
+            }
+        }, 2000);
+    </script>
+}
+<div>
+    <input type="text" class="form-control" id="searchInput" placeholder="   Cerca prodotti..." oninput="filterProducts()" style="padding-left: 30px; font-family: 'Ionicons', sans-serif;">
+</div>
+
+
+
+<div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 mt-5">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="cardShop mb-4 rounded-3 mx-4">
+                    <img src="@Html.DisplayFor(modelItem => item.Immagine)" class="card-image-container" alt="Product Image" />
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Nome)</h5>
+                        <p class="card-text descrizione">@Html.DisplayFor(modelItem => item.Descrizione)</p>
+                        <p class="prezzo">Prezzo/Kg: @Html.DisplayFor(modelItem => item.Prezzo) &euro;</p>
+
+                        @if (item.Quantita_Disp == 0)
+                        {
+                            <div class="text-center">
+                                <div class="badge bg-danger rounded-pill mb-2 w-50 text-center">Non disponibile</div>
+                                <div>
+                                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Prodotto }, new { @class = "btn BtnCard2" })
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
+                                <p class="ms-3">Quantità Disponibile: @item.Quantita_Disp</p>
+                                <div class="d-flex justify-content-evenly">
+                                    @Html.ActionLink("Modifica", "Edit", new { id = item.ID_Prodotto }, new { @class = "btn BtnCard2" })
+                                    @Html.ActionLink("Acquista", "AddToCart", "Prodotti", new { id = item.ID_Prodotto }, new { @class = "btn BtnCard1 mx-1" })
+                                    @Html.ActionLink("Elimina", "Delete", new { id = item.ID_Prodotto }, new { @class = "btn BtnCard3" })
+                                </div>
+                            }
+                            else if (User.IsInRole("Cliente"))
+                            {
+                                <div class="d-flex justify-content-evenly">
+                                    @Html.ActionLink("Acquista", "AddToCart", "Prodotti", new { id = item.ID_Prodotto }, new { @class = "btn BtnCard1 w-75 mx-1" })
+                                </div>
+                            }
+                            else if (!User.Identity.IsAuthenticated)
+                            {
+                                <div class="d-flex justify-content-evenly">
+                                    @Html.ActionLink("Accedi per Acquistare", "Authorize", "Login", new { returnUrl = HttpContext.Current.Request.Url }, new { @class = "btn BtnCard1 mb-3" })
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<script>
+    // Funzione per filtrare i prodotti
+    function filterProducts() {
+        var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+        // Se non è presente un termine di ricerca, mostra tutti i prodotti
+        if (!searchTerm.trim()) {
+            $('.col').show();
+            return;
+        }
+
+        // Nascondi tutti i prodotti e mostra solo quelli che corrispondono al criterio di ricerca
+        $('.col').hide();
+        $('.col').each(function () {
+            var productName = $(this).find('.card-title').text().toLowerCase();
+            var productDescription = $(this).find('.descrizione').text().toLowerCase();
+            if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
+                $(this).show();
+            }
+        });
+    }
+
+</script>

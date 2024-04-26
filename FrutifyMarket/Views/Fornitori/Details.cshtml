@@ -1,0 +1,69 @@
+﻿@model FrutifyMarket.Controllers.Fornitori
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="card mb-5">
+    <div class="card-body">
+        <h4 class="card-title">Fornitore</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.RagioneSociale)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.RagioneSociale)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.PIVA)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.PIVA)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Citta)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Citta)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Indirizzo)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Indirizzo)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Cap)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Cap)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Tel)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Tel)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Fornitore }, new { @class = "btn btn-outline-warning ms-4" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-secondary" })
+    </p>
+
+</div>
+

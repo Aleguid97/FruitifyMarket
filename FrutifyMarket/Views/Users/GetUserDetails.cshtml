@@ -1,0 +1,151 @@
+﻿@model IEnumerable<FrutifyMarket.Controllers.Users>
+
+@{
+    ViewBag.Title = "Profilo Utente";
+    //Layout = "~/Views/Shared/_Layout.cshtml"; // Se stai utilizzando un layout
+}
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<style>
+    a:hover {
+        text-decoration: none;
+        color:black;
+
+    }
+</style>
+<div class="user-profile">
+    <h2>Profilo Utente</h2>
+    <hr />
+
+    @foreach (var user in Model)
+    {
+        <div class="user-info">
+            <label for="username">Username:</label>
+            <span>@user.Username</span>
+        </div>
+
+        <div class="user-info">
+            <label for="email">Email:</label>
+            <span>@user.Email</span>
+        </div>
+
+        <div class="user-info">
+            <label for="ruolo">Ruolo:</label>
+            <span>@user.Ruolo</span>
+        </div>
+
+        <div class="user-info">
+            <label for="mansione">Mansione:</label>
+            <span>@user.Mansione</span>
+        </div>
+
+        <div class="user-info">
+            <label for="citta">Città:</label>
+            <span>@user.Citta</span>
+        </div>
+
+        <div class="user-info">
+            <label for="indirizzo">Indirizzo:</label>
+            <span>@user.Indirizzo</span>
+        </div>
+
+        <div class="user-info">
+            <label for="cap">CAP:</label>
+            <span>@user.Cap</span>
+        </div>
+
+        <div class="edit-button">
+            <a class="btn BtnCard2" data-bs-toggle="modal" data-bs-target="#editProfileModal">Modifica Profilo</a>
+        </div>
+    }
+
+</div>
+
+
+
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Modifica Profilo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form per l'editing dei dettagli -->
+                <form method="post" action="@Url.Action("EditUserDetails", "Users")">
+                    @Html.AntiForgeryToken() <!-- Aggiunta del token di antifalsificazione -->
+                    <input type="hidden" name="id" value="@Model.FirstOrDefault().ID_Utente" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" id="nome" name="nome" value="@Model.FirstOrDefault().Nome" />
+                            </div>
+                            <div class="form-group">
+                                <label for="cognome">Cognome:</label>
+                                <input type="text" class="form-control" id="cognome" name="cognome" value="@Model.FirstOrDefault().Cognome" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" value="@Model.FirstOrDefault().Email" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control" id="username" name="username" value="@Model.FirstOrDefault().Username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" value="@Model.FirstOrDefault().Password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="ruolo">Ruolo:</label>
+                                <input type="text" class="form-control" id="ruolo" name="ruolo" value="@Model.FirstOrDefault().Ruolo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mansione">Mansione:</label>
+                                <input type="text" class="form-control" id="mansione" name="mansione" value="@Model.FirstOrDefault().Mansione" />
+                            </div>
+                            <div class="form-group">
+                                <label for="citta">Città:</label>
+                                <input type="text" class="form-control" id="citta" name="citta" value="@Model.FirstOrDefault().Citta" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="indirizzo">Indirizzo:</label>
+                                <input type="text" class="form-control" id="indirizzo" name="indirizzo" value="@Model.FirstOrDefault().Indirizzo" />
+                            </div>
+                            <div class="form-group">
+                                <label for="cap">CAP:</label>
+                                <input type="text" class="form-control" id="cap" name="cap" value="@Model.FirstOrDefault().Cap" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" text-center">
+                        <button type="submit" class="btn BtnCard1">Salva Modifiche</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+}

@@ -1,0 +1,45 @@
+﻿
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<div class="container-fluid" style="margin-bottom:100px; margin-top:100px">
+    <div class="row d-flex align-items-stretch">
+        <div class="col-md-3">
+            <div class="card border mb-4 shadow h-75">
+                <div class="card-header bg-white text-black h4">Ordini</div>
+                <div class="card-body">
+                    <a href="@Url.Action("Index", "Ordini", new { area = "" })" class="btn BtnCard1 w-100">Visualizza Ordini</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border mb-4 shadow h-75">
+                <div class="card-header bg-white text-black h4">Prodotti</div>
+                <div class="card-body">
+                    @Html.ActionLink("Aggiungi Prodotto", "Create", "Prodotti", new { area = "" }, new { @class = "btn BtnCard1 w-100" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border mb-4 shadow h-75">
+                <div class="card-header bg-white text-black h4">Utenti</div>
+                <div class="card-body">
+                    @Html.ActionLink("Gestisci Utenti", "Index", "Users", new { area = "" }, new { @class = "btn BtnCard1 w-100" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border mb-5 shadow h-75">
+                <div class="card-header bg-white text-black h4">Fornitori</div>
+                <div class="card-body">
+                    @Html.ActionLink("Gestisci Fornitori", "Index", "Fornitori", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="~/Content/Immagini/angelo-casto-nCK0ht3nreQ-unsplash.jpg" alt="Frutta Siciliana" style="width:100%; height:20%; object-fit:cover"/>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<FrutifyMarket.Controllers.Prodotti>
+
+@{
+    var valoreOrdine = TempData["Ordine"] as string; // Puoi convertire il valore nel tipo appropriato
+}
+
+@if (TempData["LoginMessage"] != null)
+{
+    <div class="alert alert-success mb-5" role="alert">
+        @TempData["LoginMessage"]
+    </div>
+}
+
+@if (TempData["OrderConfirm"] != null)
+{
+    <div class="alert alert-success mb-5" role="alert">
+        @TempData["OrderConfirm"]
+    </div>
+}
+
+@if (TempData["LogoutMessage"] != null)
+{
+    <div id="logoutMessage" class="alert alert-success mb-5" role="alert">
+        @TempData["LogoutMessage"]
+    </div>
+
+    <script>
+        // Funzione per nascondere il messaggio dopo 2 secondi
+        setTimeout(function () {
+            var logoutMessage = document.getElementById("logoutMessage");
+            if (logoutMessage) {
+                logoutMessage.style.display = "none";
+            }
+        }, 2000);
+    </script>
+}
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        color: #004E64;
+    }
+</style>
+
+<div class="row">
+    <div class="col-6">
+        <div class="product-description">
+            <p class="h2">I nostri prodotti direttamente dalla Sicilia</p>
+            <p>Esplora la vasta selezione dei migliori prodotti siciliani, direttamente dalla terra del sole e del mare. I nostri prelibati agrumi e ogni prodotto è curato con passione e dedizione per portare l'autentico sapore della Sicilia nella tua casa.</p>
+            <p>Scopri la ricchezza dei sapori e dei profumi della Sicilia con la nostra selezione di prodotti biologici e di alta qualità, direttamente dai giardini dei nostri fornitori, seguendo i metodi di coltivazione tradizionli.</p>
+            <p>Assicurati un'esperienza sensoriale unica con i nostri prodotti, che ti faranno viaggiare attraverso i paesaggi mozzafiato e le tradizioni culinarie di questa meravigliosa isola mediterranea. La nostra gamma di prodotti comprende una vastissima gamma di prodotti di agrumi, frutti e ortaggi di ogni tipo. Ogni assaggio ti immergerà nel cuore pulsante della cultura siciliana, con la sua storia millenaria e la sua passione per il cibo di qualità.</p>
+            <p>Non solo offriamo una selezione eccezionale di prodtti, ma ci impegniamo anche per sostenere le comunità agricole locali e promuovere pratiche sostenibili. Collaboriamo direttamente con piccoli produttori e agricoltori della regione per garantire la freschezza e l'autenticità dei nostri ingredienti, contribuendo allo sviluppo economico e alla valorizzazione delle tradizioni agricole siciliane.</p>
+        </div>
+
+
+    </div>
+
+    <div class="col-6">
+        <img src="~/Content/Immagini/val-vesa-YN_4iVBquF8-unsplash.jpg" alt="Frutta Siciliana" style="width:400px; height:auto;" />
+    </div>
+</div>
+
+
+<div class="row mb-4 mt-5">
+    <h1> I Nostri prodotti più Apprezzati:</h1>
+    <div class="col-12 col-md-3">
+        <div class="card mb-2 d-block cardShop">
+            <img src="~/Content/Immagini/Melograno.png" class="card-img-top" alt="Product Image" />
+            <div class="card-body">
+                <h5 class="card-title">Melograno </h5>
+                <p class="card-text descrizione">Dente di Cavallo</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3 ">
+        <div class="card mb-2 d-block cardShop ">
+            <img src="~/Content/Immagini/pompelmo-rosa.png" class="card-img-top" alt="Product Image" />
+            <div class="card-body">
+                <h5 class="card-title">Pompelmo </h5>
+                <p class="card-text descrizione">Rosa di Sicilia</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3 ">
+        <div class="card mb-2 d-block cardShop ">
+            <img src="~/Content/Immagini/Ficupala.png" class="card-img-top" alt="Product Image" />
+            <div class="card-body">
+                <h5 class="card-title">Fico d'India</h5>
+                <p class="card-text descrizione">Batadduni</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3 ">
+        <div class="card mb-2 d-block cardShop">
+
+            <img src="~/Content/Immagini/Arancia-Tarocco_Rossa.png" class="card-img-top" alt="Product Image" />
+            <div class="card-body">
+                <h5 class="card-title">Arancia Tarocco</h5>
+                <p class="card-text descrizione"> Polpa Rossa </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

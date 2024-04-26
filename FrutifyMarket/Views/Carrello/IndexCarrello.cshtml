@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FrutifyMarket.Controllers.Prodotti>
+
+@{
+    ViewBag.Title = "IndexCarrello";
+}
+
+<h2>IndexCarrello</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fornitori.RagioneSociale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantita_Disp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Immagine)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fornitori.RagioneSociale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descrizione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezzo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantita_Disp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Immagine)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Prodotto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Prodotto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Prodotto })
+        </td>
+    </tr>
+}
+
+</table>

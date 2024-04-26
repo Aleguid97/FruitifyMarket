@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FrutifyMarket.Controllers.Users>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<h2>Lista Utenti</h2>
+
+<div class="row">
+    <div class="col-md-12 mb-3 mt-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Cerca utenti..." />
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3 user-card">
+            <!-- Aggiunta della classe "user-card" -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3">@Html.DisplayFor(modelItem => item.Nome) @Html.DisplayFor(modelItem => item.Cognome)</h5>
+                    <p class="card-text"><strong>Username:</strong> @Html.DisplayFor(modelItem => item.Username)</p>
+                    <p class="card-text"><strong>Email:</strong> @Html.DisplayFor(modelItem => item.Email)</p>
+                    <p class="card-text"><strong>Ruolo:</strong> @Html.DisplayFor(modelItem => item.Ruolo)</p>
+                    <p class="card-text"><strong>Mansione:</strong> @Html.DisplayFor(modelItem => item.Mansione)</p>
+                    <p class="card-text"><strong>Codice Fiscale:</strong> @Html.DisplayFor(modelItem => item.CodFisc)</p>
+                    <p class="card-text"><strong>Città:</strong> @Html.DisplayFor(modelItem => item.Citta)</p>
+                    <p class="card-text"><strong>Indirizzo:</strong> @Html.DisplayFor(modelItem => item.Indirizzo)</p>
+                    <p class="card-text"><strong>Cap:</strong> @Html.DisplayFor(modelItem => item.Cap)</p>
+                    <div role="group" aria-label="Azioni Utente">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID_Utente }, new { @class = "btn BtnCard2" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_Utente }, new { @class = "btn BtnCard3" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('keyup', function () {
+            var searchText = $(this).val().toLowerCase();
+            $('.user-card').each(function () {
+                var cardText = $(this).find('.card-body').text().toLowerCase(); // Modifica qui
+                if (cardText.indexOf(searchText) === -1) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+
+</script>

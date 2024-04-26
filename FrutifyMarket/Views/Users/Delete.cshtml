@@ -1,0 +1,112 @@
+﻿@model FrutifyMarket.Controllers.Users
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h3>Vuoi eliminare l'utente?</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nome)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cognome)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Cognome)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Username)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Password)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Ruolo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ruolo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Mansione)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Mansione)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CodFisc)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CodFisc)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Citta)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Citta)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Indirizzo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Indirizzo)
+                        </dd>
+
+
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-danger w-75" />
+
+
+            </div><div>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-secondary" })
+            </div>
+        </div>
+    }
+</div>

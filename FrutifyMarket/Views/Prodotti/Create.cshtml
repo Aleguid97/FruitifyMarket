@@ -1,0 +1,68 @@
+﻿@model FrutifyMarket.Controllers.Prodotti
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+    <h2 class="mb-3">Aggiungi Prodotto</h2>
+
+    @using (Html.BeginForm("Create", "Prodotti", FormMethod.Post, new { enctype = "multipart/form-data", @class = "row g-3" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Prezzo, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Prezzo, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Prezzo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.FK_ID_Fornitore, "Fornitore", htmlAttributes: new { @class = "form-label" })
+                        @Html.DropDownList("FK_ID_Fornitore", null, htmlAttributes: new { @class = "form-select", required = "required" })
+                        @Html.ValidationMessageFor(model => model.FK_ID_Fornitore, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Quantita_Disp, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Quantita_Disp, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Quantita_Disp, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.Label("Aggiungi Immagine", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBox("file", "", new { type = "file", @class = "form-control", required = "required" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="submit">Aggiungi Prodotto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
