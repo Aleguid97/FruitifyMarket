@@ -6,9 +6,18 @@
 
 @if (TempData["LoginMessage"] != null)
 {
-    <div class="alert alert-success mb-5" role="alert">
+    <div class="alert alert-success mb-5" id="LoginMessage" role="alert">
         @TempData["LoginMessage"]
     </div>
+
+    <script>
+        setTimeout(function () {
+            var loginMessage = document.getElementById("LoginMessage");
+            if (loginMessage) {
+                loginMessage.style.display = "none";
+            }
+        }, 2000);
+    </script>
 }
 
 @if (TempData["OrderConfirm"] != null)
@@ -46,12 +55,20 @@
         font-weight: 500;
         color: #004E64;
     }
+
+    .h2 
+    {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        color: #004E64;
+    }
+
 </style>
 
 <div class="row">
     <div class="col-6">
         <div class="product-description">
-            <p class="h2">I nostri prodotti direttamente dalla Sicilia</p>
+            <p class="h2">I nostri prodotti dalla Sicilia</p>
             <p>Esplora la vasta selezione dei migliori prodotti siciliani, direttamente dalla terra del sole e del mare. I nostri prelibati agrumi e ogni prodotto è curato con passione e dedizione per portare l'autentico sapore della Sicilia nella tua casa.</p>
             <p>Scopri la ricchezza dei sapori e dei profumi della Sicilia con la nostra selezione di prodotti biologici e di alta qualità, direttamente dai giardini dei nostri fornitori, seguendo i metodi di coltivazione tradizionli.</p>
             <p>Assicurati un'esperienza sensoriale unica con i nostri prodotti, che ti faranno viaggiare attraverso i paesaggi mozzafiato e le tradizioni culinarie di questa meravigliosa isola mediterranea. La nostra gamma di prodotti comprende una vastissima gamma di prodotti di agrumi, frutti e ortaggi di ogni tipo. Ogni assaggio ti immergerà nel cuore pulsante della cultura siciliana, con la sua storia millenaria e la sua passione per il cibo di qualità.</p>

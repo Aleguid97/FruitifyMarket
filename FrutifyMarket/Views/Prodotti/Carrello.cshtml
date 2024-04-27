@@ -43,7 +43,7 @@
     if (!Model.Any())
     {
         <div id="emptyCartMessage" class="alert mb-5 shadow" role="alert" style="background-color: cadetblue; color:black;">
-            <p>Il tuo carrello è vuoto, mettici qualcosa!</p>
+            <p class="fs-4 text-center mt-2">Il tuo carrello è vuoto, mettici qualcosa!</p>
         </div>
     }
 
@@ -60,7 +60,7 @@
                 <div class="row border-top border-bottom">
                     @foreach (var item in Model)
                     {
-                        Tot += (decimal)((double?)item.Prezzo); // Aggiunge il prezzo di ogni articolo al totale
+                        Tot += (decimal)item.Prezzo; // Aggiunge il prezzo di ogni articolo al totale
                         <div class="row main align-items-center">
                             <div class="col-2"><img class="img-fluid" src="@item.Immagine"></div>
                             <div class="col">
@@ -70,7 +70,7 @@
                             <div class="col mt-4 me-3">
                                 <input id="quantita" type="number" max="@item.Quantita_Disp" min="0" value="1" oninput="updateCartItemQuantity(this, @item.Prezzo)" />
                             </div>
-                            <div class="col" id="prezzoArticolo">&euro; @item.Prezzo.ToString("0.00").Replace(",", ".")</div>
+                            <div class="col" id="prezzoArticolo">&euro; @item.Prezzo</div>
 
                             @Html.ActionLink("Rimuovi", "RemoveFromCart", "Prodotti", new { id = item.ID_Prodotto }, new { @class = "btn rounded-pill bin-button" })
                         </div>
@@ -84,7 +84,7 @@
 
                     <div>
                         <label for="indirizzo">Indirizzo:</label>
-                        <input id="indirizzo" type="text" class="form-control" />
+                        <input id="indirizzo" type="text" class="form-control required" />
                     </div>
                     <div>
                         @*<label for="stato">Stato:</label>*@
@@ -114,16 +114,28 @@
 
                 <div class="row">
                     <div class="col">Spedizione</div>
-                    <div class="col text-right" id="spedizioneCosto"> <span id="spedizioneAmount">0.00</span></div>
+                    <div class="col text-right" id="spedizioneCosto"> <span id="spedizioneAmount">Carrello Vuoto</span></div>
 
                 </div>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">Prezzo Totale</div>
                     <div class="col text-right" id="prezzoTotale">€ @(Tot + SpedizioneCosto)</div>
                 </div>
-                <div class="row justify-content-center">
+
+                @if (!Model.Any()) 
+                
+                {
+                <div class="row justify-content-center" style="display:none">
                     <button type="button" class="btnPaga" id="openPaymentModal" data-toggle="modal" data-target="#paymentModal">Paga</button>
-                </div>
+                </div> 
+                }
+
+                else
+                {
+                    <div class="row justify-content-center">
+                        <button type="button" class="btnPaga" id="openPaymentModal" data-toggle="modal" data-target="#paymentModal">Paga</button>
+                    </div>
+                }
             </div>
         </div>
     </div>
