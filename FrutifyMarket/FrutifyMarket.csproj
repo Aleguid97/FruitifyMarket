@@ -185,6 +185,7 @@
     <Compile Include="Controllers\OrdinaController.cs" />
     <Compile Include="Controllers\OrdiniController.cs" />
     <Compile Include="Controllers\ProdottiController.cs" />
+    <Compile Include="Controllers\StoriaController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\Documenti.cs" />
@@ -223,13 +224,18 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\GestIMG\10003007-event-logistics-flat-circle-multicolor-gratuito-vettoriale.jpg" />
     <Content Include="Content\GestIMG\stock-creative-icon-design-vector.jpg" />
-    <Content Include="Content\Immagini\angelo-casto-nCK0ht3nreQ-unsplash.jpg" />
+    <Content Include="Content\Immagini\akash-rai-6P36fWsCypU-unsplash.jpg" />
+    <Content Include="Content\Immagini\Arance.jpg" />
     <Content Include="Content\Immagini\Giardino.jpg" />
     <Content Include="Content\Immagini\Home.png" />
     <Content Include="Content\Immagini\igp.png" />
     <Content Include="Content\Immagini\Logo_it_IGP_4c.svg.png" />
     <Content Include="Content\Immagini\N9BtxdeaaLhKE0OM__1_-removebg-preview.png" />
-    <Content Include="Content\Immagini\rayia-soderberg-ezSFnAFi9hY-unsplash.jpg" />
+    <Content Include="Content\Immagini\nrd-D6Tu_L3chLE-unsplash.jpg" />
+    <Content Include="Content\Immagini\FruttaeVerdura.jpg" />
+    <Content Include="Content\Immagini\FruttiRossi.jpg" />
+    <Content Include="Content\Immagini\produttore-consumatore.jpg" />
+    <Content Include="Content\Immagini\thomas-le-pRJhn4MbsMM-unsplash.jpg" />
     <Content Include="Content\Immagini\val-vesa-YN_4iVBquF8-unsplash.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -303,6 +309,7 @@
     <Content Include="Views\Fornitori\Details.cshtml" />
     <Content Include="Views\Fornitori\Edit.cshtml" />
     <Content Include="Views\Fornitori\Index.cshtml" />
+    <Content Include="Views\Storia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

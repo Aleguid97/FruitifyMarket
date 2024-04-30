@@ -11,6 +11,16 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Site.css")
 
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color:#000;
+        }
+    </style>
 
 </head>
 <body>
@@ -29,12 +39,15 @@
                     <li class="nav-item">
                         @Html.ActionLink("Negozio", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link" })
                     </li>
-                    @*</ul>*@
+                    <li class="nav-item">
+                        @Html.ActionLink("Chi Siamo", "Index", "Storia", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Back Office
+                                Retrobottega
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>@Html.ActionLink("Visualizza Ordini", "Index", "Ordini", new { area = "" }, new { @class = "dropdown-item" })</li>
@@ -119,25 +132,37 @@
     </div>
 
 
-    <footer style="background-color: #FFD449; margin-bottom:-50px">
-       
+    <footer style="background-color: #FFD449; margin-bottom:-50px">Z
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center mt-4">
-                        <img class="logo me-3 shadow rounded-circle" style="width:80px; height:80px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURK_cmChZK8axkrMrqnO4KxYyq-a5E_8WhhlK7k0eSA&s" alt="Fruitify Market">
-                        <img src="~/Content/Immagini/igp.png" alt="Logo IGP" style="width:80px; height:80px;" />
-                        <img src="~/Content/Immagini/Logo_it_IGP_4c.svg.png" alt="Logo IGP" style="width:80px; height:80px;" />
+                        <a href="Home/Index">
+                            <img class="logo me-3 shadow rounded-circle" style="width:80px; height:80px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURK_cmChZK8axkrMrqnO4KxYyq-a5E_8WhhlK7k0eSA&s" alt="Fruitify Market">
+                        </a>
+                        <a href="https://www.tutelaaranciarossa.it/">
+                            <img src="~/Content/Immagini/igp.png" alt="Logo IGP" style="width:80px; height:80px;" />
+                        </a>
+                        
+                        <a href="https://dopigp.politicheagricole.gov.it/it/home">
+                            <img src="~/Content/Immagini/Logo_it_IGP_4c.svg.png" alt="Logo IGP" style="width:80px; height:80px;" />
+                        </a>
+                            <p class="text-center mt-3">
+                                &copy; 2024 - Fruitify Market - Vittoria (RG) <br />
+                                Via Etnea 34
+                            </p>
 
-                        <p class="text-center mt-3">&copy; 2024 - Fruitify Market - Vittoria (RG) <br /> 
-                         Via Etnea 34</p>
-                        <p  class="text-center mt-3 blockquote-footer">Dal Produttore al Mercato Globale</p>
+                            <ion-icon class="fs-3 text-decoration-none" name="logo-facebook"></ion-icon>
+                            <a href="https://www.instagram.com/flanders.findus" target="_blank">
+                                <ion-icon class="fs-3" name="logo-instagram"></ion-icon>
+                            </a>
+
+                            <p class="text-center mt-3 blockquote-footer">Dal Produttore al Mercato Globale</p>
                     </div>
                 </div>
             </div>
         </div>
-
-    </footer>
+   </footer>
 
 
 

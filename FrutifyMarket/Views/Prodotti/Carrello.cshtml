@@ -36,6 +36,17 @@
     </div>
 }
 
+<style>
+
+    .Ccard
+    
+    {
+        
+     margin-bottom:-4px;
+    }
+
+</style>
+
 @using (Html.BeginForm("Create", "Ordini", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -122,12 +133,12 @@
                     <div class="col text-right" id="prezzoTotale">€ @(Tot + SpedizioneCosto)</div>
                 </div>
 
-                @if (!Model.Any()) 
-                
+                @if (!Model.Any())
+
                 {
-                <div class="row justify-content-center" style="display:none">
-                    <button type="button" class="btnPaga" id="openPaymentModal" data-toggle="modal" data-target="#paymentModal">Paga</button>
-                </div> 
+                    <div class="row justify-content-center" style="display:none">
+                        <button type="button" class="btnPaga" id="openPaymentModal" data-toggle="modal" data-target="#paymentModal">Paga</button>
+                    </div>
                 }
 
                 else
@@ -150,22 +161,22 @@
                     <form id="paymentForm">
                         <div class="form-group">
                             <label for="cardNumber">Numero Carta di Credito <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Inserisci il numero della carta" required maxlength="16" pattern="\d{16}">
+                            <input type="text" class="form-control Ccard" id="cardNumber" name="cardNumber" placeholder="Inserisci il numero della carta" required maxlength="16" pattern="\d{16}">
                             <small class="form-text text-muted">Il numero della carta deve essere composto da 16 cifre.</small>
                         </div>
                         <div class="form-group mt-3">
                             <label for="expirationDate">Data di Scadenza <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
+                            <input type="text" class="form-control Ccard" id="expirationDate" name="expirationDate" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
                             <small class="form-text text-muted">Il formato della data deve essere MM/YY </small>
                         </div>
                         <div class="form-group mt-3">
                             <label for="cvv">CVV <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" required maxlength="3" pattern="\d{3}">
-                            <small class="form-text text-muted">Il CVV deve essere composto da 3 cifre.</small>
+                            <input type="text" class="form-control Ccard" id="cvv" name="cvv" placeholder="CVV" required maxlength="3" pattern="\d{3}">
+                            <small class="form-text text-muted ">Il CVV deve essere composto da 3 cifre.</small>
                         </div>
                         <div class="form-group mt-3">
                             <label for="cardHolderName">Nome del Titolare <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="cardHolderName" name="cardHolderName" placeholder="Nome del Titolare" required>
+                            <input type="text" class="form-control Ccard " id="cardHolderName" name="cardHolderName" placeholder="Nome del Titolare" required>
                         </div>
                         <button type="submit" class="btnPaga w-50 mt-3" id="btnOrdina">Ordina</button>
                     </form>
@@ -187,8 +198,7 @@
         var shippingOptions =
             [
                 { value: 'Standard', label: 'Spedizione Standard - €7.00' },
-                { value: 'Fast', label: 'Spedizione Rapida - €19.00' },
-                { value: 'Gratis', label: 'Spedizione Gratuita' }
+                { value: 'Fast', label: 'Spedizione Rapida - €20.00' },
             ];
 
         // Get the select element
@@ -262,17 +272,13 @@
 
         // Calcoliamo il costo di spedizione in base all'opzione selezionata
         switch (shippingOption) {
-            case 'Gratis':
-
-                shippingCost = 0.00;
-                break;
 
             case 'Standard':
                 shippingCost = 7.00;
                 break;
 
             case 'Fast':
-                shippingCost = 19.00;
+                shippingCost = 20.00;
                 break;
         }
 

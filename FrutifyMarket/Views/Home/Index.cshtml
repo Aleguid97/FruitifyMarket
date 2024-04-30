@@ -56,13 +56,11 @@
         color: #004E64;
     }
 
-    .h2 
-    {
+    .h2 {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
         color: #004E64;
     }
-
 </style>
 
 <div class="row">
@@ -109,13 +107,13 @@
             <img src="~/Content/Immagini/Ficupala.png" class="card-img-top" alt="Product Image" />
             <div class="card-body">
                 <h5 class="card-title">Fico d'India</h5>
-                <p class="card-text descrizione">Batadduni</p>
+                <p class="card-text descrizione">Bastadduni</p>
             </div>
         </div>
     </div>
+
     <div class="col-6 col-md-3 ">
         <div class="card mb-2 d-block cardShop">
-
             <img src="~/Content/Immagini/Arancia-Tarocco_Rossa.png" class="card-img-top" alt="Product Image" />
             <div class="card-body">
                 <h5 class="card-title">Arancia Tarocco</h5>
@@ -123,6 +121,7 @@
             </div>
         </div>
     </div>
+    @Html.ActionLink("Vai al Negozio", "Index", "Prodotti", new { area = "" }, new { @class = "btn BtnCard1 w-100" })
 </div>
 
 
